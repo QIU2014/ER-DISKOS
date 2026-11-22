@@ -65,7 +65,7 @@ EFI_STATUS EFIAPI setResolution(s32 width, s32 height) {
 
     Status = uefi_call_wrapper(BS->LocateProtocol, 3, &gEfiGraphicsOutputProtocolGuid, NULL, (VOID **)&gop);
     if (EFI_ERROR(Status)) {
-        jvm_printf(L"Failed to locate GOP: %r\n", Status);
+        Print(L"Failed to locate GOP: %r\n", Status);
         return Status;
     }
 
@@ -79,7 +79,7 @@ EFI_STATUS EFIAPI setResolution(s32 width, s32 height) {
     }
 
     if (EFI_ERROR(Status)) {
-        jvm_printf(L"Failed to initialize GOP mode: %r\n", Status);
+        Print(L"Failed to initialize GOP mode: %r\n", Status);
         return Status;
     }
     FreePool(Info);
