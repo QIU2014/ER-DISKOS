@@ -26,6 +26,7 @@ function(configure_uefi_image target output_name)
 
     target_compile_options(${target} PRIVATE
         -D_FORTIFY_SOURCE=0
+        -march=x86-64
         -ffreestanding
         -fno-stack-protector
         -fpic
