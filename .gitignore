@@ -1,0 +1,24 @@
+# Build artifacts
+*.img
+*.iso
+*.bin
+*.o
+*.a
+*.so
+*.elf
+*.hex
+*.map
+*.d
+*.idx
+*.class
+
+# Build directories
+build/
+build-uefi/
+CMakeFiles/
+examples/
+uefi-main-classes/
+dist/
+out/
+.cache/
+.vscode/

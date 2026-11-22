@@ -1,0 +1,9 @@
+{
+    "cmake.sourceDirectory": "/home/eric/src/ER-DISKOS/mini_jvm/mini_jvm",
+
+    "files.associations": {
+        "*.cmake": "cmake"
+    },
+
+    "editor.inlineSuggest.enabled": false
+}

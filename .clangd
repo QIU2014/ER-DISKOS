@@ -1,0 +1,9 @@
+CompileFlags:
+  Add:
+    - -I/usr/local/include/efi
+    - -I/usr/local/include/efi/x86_64
+    - -I/usr/local/include/efi/protocol
+    - -I./**
+    - -DHAVE_USE_MS_ABI
+    - -D__x86_64__
+    - -ffreestanding
