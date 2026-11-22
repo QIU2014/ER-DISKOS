@@ -56,7 +56,7 @@ function(configure_uefi_image target output_name)
             --input-target=elf64-x86-64
             -j .text -j .sdata -j .data -j .dynamic -j .dynsym
             -j .rel -j .rela -j .reloc
-            --target=pei-x86-64
+            --output-target=pei-x86-64
             --subsystem=10
             "$<TARGET_FILE:${target}>"
             "${CMAKE_CURRENT_BINARY_DIR}/${output_name}"
