@@ -1,4 +1,5 @@
 # ER-DISKOS UEFI JVM
+[![Build using CMake](https://github.com/QIU2014/ER-DISKOS/actions/workflows/cmake-multi-platform.yml/badge.svg)](https://github.com/QIU2014/ER-DISKOS/actions/workflows/cmake-multi-platform.yml)
 
 The x86-64 UEFI target starts the mini JVM and invokes
 `com/eric/Main.main(String[])` from the EFI System Partition. It uses UEFI boot
