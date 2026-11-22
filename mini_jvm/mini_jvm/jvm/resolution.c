@@ -38,6 +38,21 @@ static EFI_STATUS reset_text_console(void) {
         return EFI_UNSUPPORTED;
     }
 
+    if (console->Mode->Mode == selected_mode) {
+        for (UINTN mode = 0; mode < (UINTN)console->Mode->MaxMode; mode++) {
+            if (mode == selected_mode ||
+                EFI_ERROR(uefi_call_wrapper(console->QueryMode, 4, console, mode,
+                                            &columns, &rows))) {
+                continue;
+            }
+            status = uefi_call_wrapper(console->SetMode, 2, console, mode);
+            if (EFI_ERROR(status)) {
+                return status;
+            }
+            break;
+        }
+    }
+
     status = uefi_call_wrapper(console->SetMode, 2, console, selected_mode);
     if (EFI_ERROR(status)) {
         return status;
