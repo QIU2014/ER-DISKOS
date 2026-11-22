@@ -53,6 +53,7 @@ function(configure_uefi_image target output_name)
     set_target_properties(${target} PROPERTIES SUFFIX ".so")
     add_custom_command(TARGET ${target} POST_BUILD
         COMMAND "${UEFI_OBJCOPY}"
+            --input-target=elf64-x86-64
             -j .text -j .sdata -j .data -j .dynamic -j .dynsym
             -j .rel -j .rela -j .reloc
             --target=pei-x86-64
