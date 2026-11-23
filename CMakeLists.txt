@@ -93,6 +93,7 @@ set(UEFI_JVM_SOURCES
     mini_jvm/mini_jvm/jvm/jvm_file_uefi.c
     mini_jvm/mini_jvm/jvm/global.c
     mini_jvm/mini_jvm/jvm/resolution.c
+    mini_jvm/mini_jvm/jvm/power.c
     mini_jvm/mini_jvm/jvm/java_native_std.c
     mini_jvm/mini_jvm/jvm/java_native_reflect.c
     mini_jvm/mini_jvm/jvm/class_load.c

@@ -3,7 +3,9 @@
 #include <time.h>
 #include "java_native_std.h"
 #include "garbage.h"
+#include "jvm.h"
 #include "resolution.h"
+#include "power.h"
 #include "jvm_util.h"
 #include <math.h>
 #ifdef JVM_UEFI
@@ -498,6 +500,20 @@ s32 com_eric_Resolution_set(Runtime *runtime, Class *clazz) {
     return 0;
 }
 
+s32 com_eric_Power_shutdown(Runtime *runtime, Class *clazz) {
+    RuntimeStack *stack = runtime->stack;
+    EFI_STATUS status = shutdown();
+    push_int(stack, EFI_ERROR(status) ? 0 : 1);
+    return 0;
+}
+
+s32 com_eric_Power_reboot(Runtime *runtime, Class *clazz) {
+    RuntimeStack *stack = runtime->stack;
+    EFI_STATUS status = reboot();
+    push_int(stack, EFI_ERROR(status) ? 0 : 1);
+    return 0;
+}
+
 s32 java_lang_String_charAt0(Runtime *runtime, Class *clazz) {
     RuntimeStack *stack = runtime->stack;
     Instance *jstr = (Instance *) localvar_getRefer(runtime, 0);
@@ -945,6 +961,8 @@ static java_native_method method_table[] = {
         {"java/lang/Runtime",                   "gc",                "()V",                                        java_lang_Runtime_gc},
         {"java/lang/Runtime",                   "setResolution",     "(II)V",                                      java_lang_Runtime_setResolution},
         {"com/eric/Resolution",                 "set",               "(II)Z",                                      com_eric_Resolution_set},
+        {"com/eric/Power",                      "shutdown",          "()Z",                                        com_eric_Power_shutdown},
+        {"com/eric/Power",                      "reboot",            "()Z",                                        com_eric_Power_reboot},
         {"java/lang/String",                    "charAt0",           "(I)C",                                       java_lang_String_charAt0},
         {"java/lang/String",                    "equals",            "(Ljava/lang/Object;)Z",                      java_lang_String_equals},
         {"java/lang/String",                    "indexOf",           "(I)I",                                       java_lang_String_indexOf},

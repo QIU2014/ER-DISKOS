@@ -38,5 +38,4 @@ exec "$qemu_bin" \
     -cdrom "$image" \
     -boot order=d \
     -display gtk \
-    -no-reboot \
     -net none

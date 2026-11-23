@@ -57,5 +57,4 @@ exec "$qemu_bin" \
     -boot order=d \
     "${qemu_display_args[@]}" \
     -monitor none \
-    -no-reboot \
     -net none

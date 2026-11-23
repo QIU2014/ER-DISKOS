@@ -58,7 +58,9 @@ set(SOURCE_FILES
         )
 
 add_executable(mini_jvm ${SOURCE_FILES}
-    jvm/main.c)
+    jvm/main.c
+    jvm/power.c
+    jvm/power.h)
 
 #Set link library.
 TARGET_LINK_LIBRARIES(mini_jvm pthread m )

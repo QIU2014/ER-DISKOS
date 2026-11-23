@@ -94,7 +94,7 @@ EFI_STATUS EFIAPI efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable
         uefi_jvm_printf("JVM execution failed with status %d.\n", vm_status);
     }
     
-    gRT->ResetSystem(EfiResetShutdown, EFI_SUCCESS, 0, NULL);
+    uefi_call_wrapper(gRT->ResetSystem, 4, EfiResetShutdown, EFI_SUCCESS, 0, NULL);
     
     return shutdown_with_status(vm_status == 0 ? EFI_SUCCESS : EFI_ABORTED);
 #else
@@ -134,7 +134,7 @@ EFI_STATUS EFIAPI efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable
 
     status = uefi_platform_write(L"Main.class magic verified; VM execution is the next step.\r\n");
 
-    gRT->ResetSystem(EfiResetShutdown, EFI_SUCCESS, 0, NULL);
+    uefi_call_wrapper(gRT->ResetSystem, 4, EfiResetShutdown, EFI_SUCCESS, 0, NULL);
 
     return shutdown_with_status(status);
 #endif

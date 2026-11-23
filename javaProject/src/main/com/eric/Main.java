@@ -18,11 +18,15 @@ public final class Main {
             String input = scanner.nextLine();
             if (input.equalsIgnoreCase("shutdown")) {
                 System.out.println("Bye!");
-                break;
+                if (Power.shutdown()) {
+                    break;
+                }
+                System.out.println("Unable to shut down.");
             } else if (input.equalsIgnoreCase("help")) {
                 System.out.println("Available commands:");
                 System.out.println("  help - Show this help message");
                 System.out.println("  shutdown - Shutdown the system");
+                System.out.println("  reboot - Reboot the system (Warm)");
                 System.out.println("  echo <message> - Print the message to the console");
                 System.out.println("  time - Show the current system time");
                 System.out.println("  date - Show the current system date");
@@ -68,6 +72,10 @@ public final class Main {
                     }
                 } else {
                     System.out.println("Usage: resolution <width> <height>");
+                }
+            } else if (input.equalsIgnoreCase("reboot"))  {
+                if (!Power.reboot()) {
+                    System.out.println("Unable to reboot.");
                 }
             } else {
                 System.out.println("Unknown command: " + input);
